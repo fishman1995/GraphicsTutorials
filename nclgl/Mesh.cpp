@@ -105,11 +105,11 @@ void	Mesh::BufferData()	{
 
 	//Buffer weight indices data...uses a different function since its integers...
 	if (weightIndices) {
-		glGenBuffers(1, &bufferObject[WEIGHTINDEX_BUFFER]); 
-		glBindBuffer(GL_ARRAY_BUFFER, bufferObject[WEIGHTINDEX_BUFFER]);	
-		glBufferData(GL_ARRAY_BUFFER, numVertices * sizeof(int) * 4, weightIndices, GL_STATIC_DRAW);	
+		glGenBuffers(1, &bufferObject[WEIGHTINDEX_BUFFER]);
+		glBindBuffer(GL_ARRAY_BUFFER, bufferObject[WEIGHTINDEX_BUFFER]);
+		glBufferData(GL_ARRAY_BUFFER, numVertices * sizeof(int) * 4, weightIndices, GL_STATIC_DRAW);
 		glVertexAttribIPointer(WEIGHTINDEX_BUFFER, 4, GL_INT, 0, 0); 
-		glEnableVertexAttribArray(WEIGHTINDEX_BUFFER);	
+		glEnableVertexAttribArray(WEIGHTINDEX_BUFFER);
 
 		glObjectLabel(GL_BUFFER, bufferObject[WEIGHTINDEX_BUFFER], -1, "Weight Indices");
 	}
