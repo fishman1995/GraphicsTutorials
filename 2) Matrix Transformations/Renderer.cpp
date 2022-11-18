@@ -3,6 +3,7 @@
 Renderer::Renderer(Window& parent) : OGLRenderer(parent) {
 	triangle = Mesh::GenerateTriangle();
 	matrixShader = new Shader("MatrixVertex.glsl", "colourFragment.glsl");
+	camera = new Camera();
 
 	if (!matrixShader->LoadSuccess()) {
 		return;
@@ -47,3 +48,9 @@ void Renderer::RenderScene() {
 		triangle->Draw();
 	}
 }
+
+void Renderer::UpdateScene(float dt) {
+	camera->UpdateCamera(dt);
+	viewMatrix = camera->BuildViewMatrix();
+}
+
