@@ -3,6 +3,9 @@
 SceneNode::SceneNode(Mesh* mesh, Vector4 colour) {
 	this->mesh = mesh;
 	this->colour = colour;
+	boundingRadius = 1.0f;
+	distanceFromCamera = 0.0f;
+	texture = 0;
 	parent = NULL;
 	modelScale = Vector3(1, 1, 1);
 }
@@ -34,4 +37,4 @@ void SceneNode::Update(float dt) {
 	for (auto i = children.begin(); i != children.end(); ++i) {
 		(*i)->Update(dt);
 	}
-}
+}xx

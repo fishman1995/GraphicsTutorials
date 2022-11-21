@@ -87,6 +87,9 @@ public:
 	static Mesh* GenerateQuard();
 
 protected:
+	GLuint numIndices;
+	unsigned int* indices;
+
 	void	BufferData();
 
 	GLuint	arrayObject;
