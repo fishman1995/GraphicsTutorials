@@ -86,10 +86,11 @@ public:
 	static Mesh* GenerateTriangle();
 	static Mesh* GenerateQuard();
 
-protected:
-	GLuint numIndices;
-	unsigned int* indices;
+	//light
+	void GenerateNormals();
+	bool GetVertexIndicesForTri(unsigned int i, unsigned int& a, unsigned int& b, unsigned int& c) const;
 
+protected:
 	void	BufferData();
 
 	GLuint	arrayObject;

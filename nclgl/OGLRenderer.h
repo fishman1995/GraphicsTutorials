@@ -58,10 +58,11 @@ public:
 	bool			HasInitialised() const;	
 	
 protected:
+	void SetShaderLight(const Light& l);
 	virtual void	Resize(int x, int y);	
 	void			UpdateShaderMatrices();
 	void			BindShader(Shader*s);
-
+	void SetTextureRepeating(GLuint target, bool state);
 	void StartDebugGroup(const std::string& s) {
 		glPushDebugGroup(GL_DEBUG_SOURCE_APPLICATION, 0, (GLsizei)s.length(), s.c_str());
 	}
@@ -69,8 +70,6 @@ protected:
 	void EndDebugGroup() {
 		glPopDebugGroup();
 	}
-
-	void SetTextureRepeating(GLuint target, bool state);
 
 	Matrix4 projMatrix;		//Projection matrix
 	Matrix4 modelMatrix;	//Model matrix. NOT MODELVIEW

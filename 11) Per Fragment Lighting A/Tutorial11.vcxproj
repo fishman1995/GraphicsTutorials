@@ -18,6 +18,13 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Tutorial11.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Renderer.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{95F93172-8DC5-4E52-80B6-0D56624BD569}</ProjectGuid>
     <RootNamespace>Tutorial1</RootNamespace>
@@ -129,9 +136,6 @@
       <AdditionalDependencies>nclgl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Tutorial11.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

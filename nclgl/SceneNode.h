@@ -31,6 +31,9 @@ public:
 	void SetBoundingRadius(float f) { boundingRadius = f; }
 
 	float GetCameraDistance() const { return distanceFromCamera; }
+	void SetCameraDistance(float f) { distanceFromCamera = f; }
+	
+	void SetTexture(GLuint t) { texture = t; }
 	GLuint GetTexture() const { return texture; }
 
 	static bool CompareByCameraDistance(SceneNode* a, SceneNode* b) {

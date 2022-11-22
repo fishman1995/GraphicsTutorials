@@ -31,7 +31,7 @@ HeightMap::HeightMap(const std::string& name) {
 		for (int x = 0; x < iWidth - 1; ++x) {
 			int a = (z * (iWidth)) + x;
 			int b = (z * (iWidth)) + (x + 1);
-			int c = ((z + 1) * (iWidth)+(x + 1));
+			int c = ((z + 1) * (iWidth))+(x + 1);
 			int d = ((z + 1) * (iWidth)) + x;
 
 			indices[i++] = a;
@@ -43,6 +43,8 @@ HeightMap::HeightMap(const std::string& name) {
 			indices[i++] = d;
 		}
 	}
+	//light
+	GenerateNormals();
 	BufferData();
 	
 	heightmapSize.x = vertexScale.x * (iWidth - 1);

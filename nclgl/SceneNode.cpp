@@ -37,4 +37,4 @@ void SceneNode::Update(float dt) {
 	for (auto i = children.begin(); i != children.end(); ++i) {
 		(*i)->Update(dt);
 	}
-}xx
+}

@@ -14,6 +14,7 @@ _-_-_-_-_-_-_-""  ""
 */
 #include "OGLRenderer.h"
 #include "Shader.h"
+#include "Light.h"
 #include <algorithm>
 
 using std::string;
@@ -202,13 +203,24 @@ projMatrix, and textureMatrix. Updates them with the relevant
 matrix data. Sanity checks currentShader, so is always safe to
 call.
 */
-void OGLRenderer::UpdateShaderMatrices()	{
-	if(currentShader) {
-		glUniformMatrix4fv(glGetUniformLocation(currentShader->GetProgram(), "modelMatrix")   ,	1,false, modelMatrix.values);
-		glUniformMatrix4fv(glGetUniformLocation(currentShader->GetProgram(), "viewMatrix")    ,	1,false, viewMatrix.values);
-		glUniformMatrix4fv(glGetUniformLocation(currentShader->GetProgram(), "projMatrix")    ,	1,false, projMatrix.values);
-		glUniformMatrix4fv(glGetUniformLocation(currentShader->GetProgram(), "textureMatrix") , 1,false, textureMatrix.values);
-		glUniformMatrix4fv(glGetUniformLocation(currentShader->GetProgram(), "shadowMatrix")  , 1,false, shadowMatrix.values);
+void OGLRenderer::UpdateShaderMatrices() {
+	if (currentShader) {
+		glUniformMatrix4fv(
+			glGetUniformLocation(currentShader->GetProgram(),
+				"modelMatrix"), 1, false, modelMatrix.values);
+
+		glUniformMatrix4fv(
+			glGetUniformLocation(currentShader->GetProgram(),
+				"viewMatrix"), 1, false, viewMatrix.values);
+
+		glUniformMatrix4fv(
+			glGetUniformLocation(currentShader->GetProgram(),
+				"projMatrix"), 1, false, projMatrix.values);
+
+		glUniformMatrix4fv(
+			glGetUniformLocation(currentShader->GetProgram(),
+				"textureMatrix"), 1, false, textureMatrix.values);
+
 	}
 }
 
@@ -259,10 +271,25 @@ void OGLRenderer::DebugCallback(GLenum source, GLenum type, GLuint id, GLenum se
 #endif
 
 void OGLRenderer::SetTextureRepeating(GLuint target, bool repeating) {
-	glBindTexture(GL_TEXTURE_2D, target);
+	/*glBindTexture(GL_TEXTURE_2D, target);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, repeating ? GL_REPEAT : GL_CLAMP);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, repeating ? GL_REPEAT : GL_CLAMP);
+	glBindTexture(GL_TEXTURE_2D, 0);*/
+	glBindTexture(GL_TEXTURE_2D, target);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,
+		repeating ? GL_REPEAT : GL_CLAMP);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
+		repeating ? GL_REPEAT : GL_CLAMP);
 	glBindTexture(GL_TEXTURE_2D, 0);
+
 }
 
-
+void OGLRenderer::SetShaderLight(const Light& l) {
+	glUniform3fv(glGetUniformLocation(currentShader->GetProgram(),
+		"lightPos"), 1, (float*)&l.GetPosition());
+	glUniform4fv(glGetUniformLocation(currentShader->GetProgram(),
+		"lightColour"), 1, (float*)&l.GetColour());
+	glUniform1f(glGetUniformLocation(currentShader->GetProgram(),
+		"lightRadius"), l.GetRadius());
+}
+ 
