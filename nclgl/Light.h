@@ -2,6 +2,7 @@
 
 #include"Vector4.h"
 #include"Vector3.h"
+#include"Matrix4.h"
 
 class Light {
 public:
@@ -13,9 +14,11 @@ public:
 	}
 
 	~Light(void) {};
-
 	Vector3 GetPosition() const { return position; }
 	void SetPosition(const Vector3& val) { position = val; }
+	void Rotation(float dt, const Vector3 normal) {
+		position = Matrix4::Rotation(20*dt, normal)*position;
+	}
 
 	float GetRadius() const { return radius; }
 	void SetRadius(float val) { radius = val; }

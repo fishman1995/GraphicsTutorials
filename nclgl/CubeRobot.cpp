@@ -3,8 +3,8 @@
 CubeRobot::CubeRobot(Mesh* cube) {
 	//SetMesh(cube); //Uncomment if you want a local origin marker!
 
-		SceneNode* body = new SceneNode(cube, Vector4(1, 0, 0, 1));	//Red
-		body->SetModelScale(Vector3(10, 15, 5));
+	SceneNode* body = new SceneNode(cube, Vector4(1, 0, 0, 1));	//Red
+	body->SetModelScale(Vector3(10, 15, 5));
 	body->SetTransform(Matrix4::Translation(Vector3(0, 35, 0)));
 	AddChild(body);
 

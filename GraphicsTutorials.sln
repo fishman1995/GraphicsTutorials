@@ -112,6 +112,43 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shaders", "Shaders", "{1A82
 		Shaders\zxVertex.glsl = Shaders\zxVertex.glsl
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Textures", "Textures", "{1E812181-A7FC-4E8B-B18F-9D1048E803C0}"
+	ProjectSection(SolutionItems) = preProject
+		Textures\Barren Reds.JPG = Textures\Barren Reds.JPG
+		Textures\Barren RedsDOT3.JPG = Textures\Barren RedsDOT3.JPG
+		Textures\brick.tga = Textures\brick.tga
+		Textures\brickDOT3.tga = Textures\brickDOT3.tga
+		Textures\noise.png = Textures\noise.png
+		Textures\particle.tga = Textures\particle.tga
+		Textures\reticle.tga = Textures\reticle.tga
+		Textures\rusted_down.jpg = Textures\rusted_down.jpg
+		Textures\rusted_east.jpg = Textures\rusted_east.jpg
+		Textures\rusted_north.jpg = Textures\rusted_north.jpg
+		Textures\rusted_south.jpg = Textures\rusted_south.jpg
+		Textures\rusted_up.jpg = Textures\rusted_up.jpg
+		Textures\rusted_west.jpg = Textures\rusted_west.jpg
+		Textures\stainedglass.tga = Textures\stainedglass.tga
+		Textures\star.png = Textures\star.png
+		Textures\stubdot3.tga = Textures\stubdot3.tga
+		Textures\tahoma.tga = Textures\tahoma.tga
+		Textures\water.tga = Textures\water.tga
+		Textures\waterbump.png = Textures\waterbump.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RealisticCharacter", "RealisticCharacter", "{3D75C36B-9D53-4ACE-993C-8853FB7B41F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "role", "role", "{58F5AEFD-4DF5-4D11-A3FB-749CE6834F7C}"
+	ProjectSection(SolutionItems) = preProject
+		Textures\RealisticCharacter\role\Body.tga = Textures\RealisticCharacter\role\Body.tga
+		Textures\RealisticCharacter\role\Hair.tga = Textures\RealisticCharacter\role\Hair.tga
+		Textures\RealisticCharacter\role\head.tga = Textures\RealisticCharacter\role\head.tga
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "weapon", "weapon", "{B62E4CC4-A4BF-4CCA-8162-B5D52A3AC022}"
+	ProjectSection(SolutionItems) = preProject
+		Textures\RealisticCharacter\weapon\Weapon.tga = Textures\RealisticCharacter\weapon\Weapon.tga
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -285,6 +322,9 @@ Global
 		{5E5378FE-275C-4B32-935D-22E7A4AD5AA3} = {26FF1E94-61DD-4E24-A071-50FA11CAC038}
 		{55C75BC7-89C2-4B38-8118-CF8C26426E7A} = {26FF1E94-61DD-4E24-A071-50FA11CAC038}
 		{8274D442-89CD-4AC2-AA8E-A9FA621452ED} = {B12FA29E-1613-4E55-9C1D-B7DCD8A760D8}
+		{3D75C36B-9D53-4ACE-993C-8853FB7B41F6} = {1E812181-A7FC-4E8B-B18F-9D1048E803C0}
+		{58F5AEFD-4DF5-4D11-A3FB-749CE6834F7C} = {3D75C36B-9D53-4ACE-993C-8853FB7B41F6}
+		{B62E4CC4-A4BF-4CCA-8162-B5D52A3AC022} = {3D75C36B-9D53-4ACE-993C-8853FB7B41F6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EE1CFC99-AD82-4869-B6CB-66D4733450DC}

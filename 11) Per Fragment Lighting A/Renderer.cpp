@@ -32,6 +32,7 @@ Renderer::~Renderer(void) {
 }
 void Renderer::UpdateScene(float dt) {
 	camera->UpdateCamera(dt);
+	light->Rotation(-dt, Vector3(0, 0, 1));
 	viewMatrix = camera->BuildViewMatrix();
 }
 

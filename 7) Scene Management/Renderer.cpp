@@ -18,7 +18,7 @@ Renderer::Renderer(Window& parent) : OGLRenderer(parent) {
 	}
 
 	root = new SceneNode();
-
+	//initialize scene nodes...
 	for (int i = 0; i < 5; ++i) {
 		SceneNode* s = new SceneNode();
 		s->SetColour(Vector4(1.0f, 1.0f, 1.0f, 0.5f));
@@ -60,9 +60,10 @@ void Renderer::UpdateScene(float dt) {
 
 void Renderer::BuildNodeLists(SceneNode* from) {
 	if (frameFrustum.InsideFrustum(*from)) {
+		//claculate distance between node and camera.
 		Vector3 dir = from->GetWorldTransform().GetPositionVector() - camera->GetPosition();
 		from->SetCameraDistance(Vector3::Dot(dir, dir));
-
+		//separate transparent from opaque.
 		if (from->GetColour().w < 1.0f) {
 			transparentNodeList.push_back(from);
 		}
@@ -77,11 +78,9 @@ void Renderer::BuildNodeLists(SceneNode* from) {
 }
 
 void Renderer::SortNodeList(){
-	std::sort(transparentNodeList.rbegin(),
-		transparentNodeList.rend(),
+	std::sort(transparentNodeList.rbegin(), transparentNodeList.rend(),
 		SceneNode::CompareByCameraDistance);
-	std::sort(nodeList.begin(),
-		nodeList.end(),
+	std::sort(nodeList.begin(), nodeList.end(),
 		SceneNode::CompareByCameraDistance);
 }
 
@@ -100,15 +99,15 @@ void Renderer::DrawNode(SceneNode* n) {
 		glUniformMatrix4fv(
 			glGetUniformLocation(shader->GetProgram(), "modelMatrix"), 1, false, model.values);
 
-		glUniform4fv(glGetUniformLocation(shader->GetProgram(),
-			"nodeColour"), 1, (float*)&n->GetColour());
+		glUniform4fv(
+			glGetUniformLocation(shader->GetProgram(), "nodeColour"), 1, (float*)&n->GetColour());
 
 		texture = n->GetTexture();
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texture);
 
-		glUniform1i(glGetUniformLocation(shader->GetProgram(),
-			"useTexture"), texture);
+		glUniform1i(
+			glGetUniformLocation(shader->GetProgram(), "useTexture"), texture);
 
 		n->Draw(*this);
 	}
@@ -123,9 +122,10 @@ void Renderer::RenderScene() {
 	BindShader(shader);
 	UpdateShaderMatrices();
 
-	glUniform1i(glGetUniformLocation(shader->GetProgram(), "diffuseTex"), 0);
+	glUniform1i(
+		glGetUniformLocation(shader->GetProgram(), "diffuseTex"), 0);
 	
-	DrawNode();
+	DrawNodes();
 
 	ClearNodeLists();
 }
