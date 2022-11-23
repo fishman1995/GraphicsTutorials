@@ -45,6 +45,9 @@ HeightMap::HeightMap(const std::string& name) {
 	}
 	//light
 	GenerateNormals();
+	//tangent mapping
+	GenerateTangents();
+
 	BufferData();
 	
 	heightmapSize.x = vertexScale.x * (iWidth - 1);
