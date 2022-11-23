@@ -20,28 +20,28 @@ void Camera::UpdateCamera(float dt) {
 	Vector3 right = rotation * Vector3(1, 0, 0);
 
 	float speed = 30.0f * dt;
-	/*float zSpeed = CAMERA_Z_SPEED * dt;
+	float zSpeed = CAMERA_Z_SPEED * dt;
 	float xSpeed = CAMERA_X_SPEED * dt;
-	float ySpeed = CAMERA_Y_SPEED * dt;*/
+	float ySpeed = CAMERA_Y_SPEED * dt;
 	//控制摄像头位置
 	if (Window::GetKeyboard()->KeyDown(KEYBOARD_W)) {
-		position += forward * speed; //forward控制速度，每30个单位移动多少距离
+		position += forward * zSpeed; //forward控制速度，每30个单位移动多少距离
 	}
 	if (Window::GetKeyboard()->KeyDown(KEYBOARD_S)) {
-		position -= forward * speed;
+		position -= forward * zSpeed;
 	}
 	if (Window::GetKeyboard()->KeyDown(KEYBOARD_A)) {
-		position -= right * speed;
+		position -= right * xSpeed;
 	}
 	if (Window::GetKeyboard()->KeyDown(KEYBOARD_D)) {
-		position += right * speed;
+		position += right * xSpeed;
 	}
 	//控制上下
 	if (Window::GetKeyboard()->KeyDown(KEYBOARD_SHIFT)) {
-		position.y += speed;
+		position.y += ySpeed;
 	}
 	if (Window::GetKeyboard()->KeyDown(KEYBOARD_SPACE)) {
-		position.y -= speed;
+		position.y -= ySpeed;
 	}
 }
 
