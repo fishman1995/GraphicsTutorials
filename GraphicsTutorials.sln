@@ -99,12 +99,17 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shaders", "Shaders", "{1A82F992-675B-4CE3-8F0E-4ADB3353E4F7}"
 	ProjectSection(SolutionItems) = preProject
 		Shaders\basicVertex.glsl = Shaders\basicVertex.glsl
+		Shaders\bufferFragment.glsl = Shaders\bufferFragment.glsl
 		Shaders\BumpFragment.glsl = Shaders\BumpFragment.glsl
 		Shaders\BumpVertex.glsl = Shaders\BumpVertex.glsl
 		Shaders\colourFragment.glsl = Shaders\colourFragment.glsl
+		Shaders\combinefrag.glsl = Shaders\combinefrag.glsl
+		Shaders\combinevert.glsl = Shaders\combinevert.glsl
 		Shaders\MatrixVertex.glsl = Shaders\MatrixVertex.glsl
 		Shaders\PerPixelFragment.glsl = Shaders\PerPixelFragment.glsl
 		Shaders\PerPixelVertex.glsl = Shaders\PerPixelVertex.glsl
+		Shaders\pointlightfrag.glsl = Shaders\pointlightfrag.glsl
+		Shaders\pointlightvertex.glsl = Shaders\pointlightvertex.glsl
 		Shaders\reflectFragment.glsl = Shaders\reflectFragment.glsl
 		Shaders\reflectVertex.glsl = Shaders\reflectVertex.glsl
 		Shaders\SceneFragment.glsl = Shaders\SceneFragment.glsl

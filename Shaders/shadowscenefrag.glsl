@@ -41,7 +41,7 @@ void main (void) {
 	vec3 shadowNDC = IN.shadowProj.xyz / IN.shadowProj.w;
 	if(abs(shadowNDC.x) < 1.0f &&
 		abs(shadowNDC.y) < 1.0f &&
-		abs(shadowNDC.z) < 1.0f) {
+		abs(shadowNDC.z) < 1.0f || true) {
 		vec3 biasCoord = shadowNDC * 0.5f + 0.5f;
 		float shadowZ = texture(shadowTex, biasCoord.xy).x ;
 		if(shadowZ < biasCoord.z) {

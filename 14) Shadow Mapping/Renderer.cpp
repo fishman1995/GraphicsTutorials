@@ -52,12 +52,12 @@ Renderer::Renderer(Window& parent) : OGLRenderer(parent) {
 	init = true;
 }
 
-Renderer ::~Renderer(void) {
+Renderer ::~Renderer(void) { 
 	glDeleteTextures(1, &shadowTex);
 	glDeleteFramebuffers(1, &shadowFBO);
-	for (auto& i : sceneMeshes) {
+	/*for (auto& i : sceneMeshes) {
 		delete i;
-	}
+	}*/
 
 	delete camera;
 	delete sceneShader;
