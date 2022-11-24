@@ -84,7 +84,7 @@ public:
 	bool GetSubMesh(const std::string& name, const SubMesh* s) const;
 
 	static Mesh* GenerateTriangle();
-	static Mesh* GenerateQuard();
+	static Mesh* GenerateQuad();
 
 	//light
 	void GenerateNormals();

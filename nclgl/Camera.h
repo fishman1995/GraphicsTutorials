@@ -4,9 +4,9 @@
 
 
 enum CameraSpeed {
-	CAMERA_Z_SPEED = 50,
-	CAMERA_X_SPEED = 50,
-	CAMERA_Y_SPEED = 50,
+	CAMERA_Z_SPEED = 100,
+	CAMERA_X_SPEED = 100,
+	CAMERA_Y_SPEED = 200,
 };
 class Camera {
 public:
