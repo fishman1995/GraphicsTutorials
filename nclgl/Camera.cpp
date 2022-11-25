@@ -2,8 +2,15 @@
 #include"Window.h"
 #include<algorithm>
 void Camera::UpdateCamera(float dt) {
-	pitch -= (Window::GetMouse()->GetRelativePosition().y);
-	yaw -= (Window::GetMouse()->GetRelativePosition().x);
+	//auto
+	auto pMove = Window::GetMouse()->GetRelativePosition().y;
+	auto yMove = Window::GetMouse()->GetRelativePosition().x;
+	if (0 == pMove && 0 == yMove) {
+		pMove = autoPDir * dt;
+		yMove = autoYDir * dt;
+	}
+	pitch -= pMove;
+	yaw -= yMove;
 
 	pitch = std::min(pitch, 90.0f);
 	pitch = std::max(pitch, -90.0f);
@@ -14,12 +21,16 @@ void Camera::UpdateCamera(float dt) {
 	if (yaw > 360.0f) {
 		yaw -= 360.0f;
 	}
+
+	ChangeAutoView();
+
 	Matrix4 rotation = Matrix4::Rotation(yaw, Vector3(0, 1, 0));
 
 	Vector3 forward = rotation * Vector3(0, 0, -1);
 	Vector3 right = rotation * Vector3(1, 0, 0);
 
-	float speed = 30.0f * dt;
+	//auto default speed;
+	float deSpeed = 2.0f;
 	float zSpeed = CAMERA_Z_SPEED * dt;
 	float xSpeed = CAMERA_X_SPEED * dt;
 	float ySpeed = CAMERA_Y_SPEED * dt;
@@ -27,6 +38,9 @@ void Camera::UpdateCamera(float dt) {
 	if (Window::GetKeyboard()->KeyDown(KEYBOARD_W)) {
 		position += forward * zSpeed; //forward控制速度，每30个单位移动多少距离
 	}
+	/*else {
+		position += forward * deSpeed;
+	}*/
 	if (Window::GetKeyboard()->KeyDown(KEYBOARD_S)) {
 		position -= forward * zSpeed;
 	}
@@ -43,6 +57,7 @@ void Camera::UpdateCamera(float dt) {
 	if (Window::GetKeyboard()->KeyDown(KEYBOARD_SPACE)) {
 		position.y -= ySpeed;
 	}
+	std::cout << position.y << std::endl;
 }
 
 Matrix4 Camera::BuildViewMatrix() {
@@ -50,3 +65,14 @@ Matrix4 Camera::BuildViewMatrix() {
 		Matrix4::Rotation(-yaw, Vector3(0, 1, 0)) *
 		Matrix4::Translation(-position);
 }
+
+void Camera::ChangeAutoView() {
+	if (-20 <= pitch) {
+		autoPDir = g_camAutoPSp;
+	}
+	if (-30 >= pitch) {
+		autoPDir = -g_camAutoPSp;
+	}
+	autoYDir = 180 <= yaw ? g_camAutoYSp : -g_camAutoYSp;
+}
+

@@ -10,8 +10,10 @@ public:
 	SceneNode(Mesh* m = NULL, Vector4 colour = Vector4(1, 1, 1, 1));
 	~SceneNode(void);
 	
-	void SetTransform(const Matrix4& matrix) { transform = matrix; };
+	void SetTransform(const Matrix4& matrix) { transform = matrix; }
 	const Matrix4& GetTransform() const { return transform; }
+
+	void SetWorldTransform(Matrix4 trans) { worldTransform = trans; }
 	Matrix4 GetWorldTransform() const { return worldTransform; }
 
 	Vector4 GetColour() const { return colour; }

@@ -1,7 +1,7 @@
 #include"CubeRobot.h"
 
 CubeRobot::CubeRobot(Mesh* cube) {
-	//SetMesh(cube); //Uncomment if you want a local origin marker!
+	SetMesh(cube); //Uncomment if you want a local origin marker!
 
 	SceneNode* body = new SceneNode(cube, Vector4(1, 0, 0, 1));	//Red
 	body->SetModelScale(Vector3(10, 15, 5));

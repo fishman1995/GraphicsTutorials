@@ -13,6 +13,8 @@ out Vertex {
 	vec2 texCoord;
 	vec3 normal;
 	vec3 worldPos;
+
+	float height;
 } OUT;
 
 void main(void) {
@@ -27,4 +29,6 @@ void main(void) {
 	OUT.worldPos = worldPos.xyz;
 
 	gl_Position  = (projMatrix * viewMatrix) * worldPos;
+
+	OUT.height = position.y;
 }

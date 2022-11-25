@@ -4,10 +4,12 @@
 
 
 enum CameraSpeed {
-	CAMERA_Z_SPEED = 100,
-	CAMERA_X_SPEED = 100,
-	CAMERA_Y_SPEED = 200,
+	CAMERA_Z_SPEED = 200,
+	CAMERA_X_SPEED = 200,
+	CAMERA_Y_SPEED = 400,
+	
 };
+
 class Camera {
 public:
 	Camera(void) {
@@ -36,7 +38,15 @@ public:
 	float GetPitch() const { return pitch; }
 	void SetPitch(float p) { pitch = p; }
 
+	void ChangeAutoView();
+
 protected:
+	const float g_camAutoPSp = 2.0f;
+	const float g_camAutoYSp = 5.0f;
+
+	float autoPDir = g_camAutoPSp;
+	float autoYDir = g_camAutoYSp;
+
 	float yaw;
 	float pitch;
 	Vector3 position; //Set to 0,0,0 by Vector3 constructor ;)

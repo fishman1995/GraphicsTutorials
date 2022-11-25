@@ -5,7 +5,8 @@
 
 Renderer::Renderer(Window& parent) : OGLRenderer(parent) {
 	camera = new Camera(0.0f, 0.0f, (Vector3(0, 100, 750.0f)));
-	quad = Mesh::GenerateQuard();
+	quad = Mesh::GenerateQuad();
+	//quad = Mesh::LoadFromMeshFile("Fir_Tree.msh");
 	cube = Mesh::LoadFromMeshFile("offsetCubeY.msh");
 
 	shader = new Shader("SceneVertex.glsl", "SceneFragment.glsl");
@@ -96,18 +97,18 @@ void Renderer::DrawNodes() {
 void Renderer::DrawNode(SceneNode* n) {
 	if (n->GetMesh()) {
 		Matrix4 model = n->GetWorldTransform() * Matrix4::Scale(n->GetModelScale());
-		glUniformMatrix4fv(
-			glGetUniformLocation(shader->GetProgram(), "modelMatrix"), 1, false, model.values);
+		glUniformMatrix4fv(glGetUniformLocation(shader->GetProgram(),
+			"modelMatrix"), 1, false, model.values);
 
-		glUniform4fv(
-			glGetUniformLocation(shader->GetProgram(), "nodeColour"), 1, (float*)&n->GetColour());
+		glUniform4fv(glGetUniformLocation(shader->GetProgram(), 
+			"nodeColour"), 1, (float*)&n->GetColour());
 
 		texture = n->GetTexture();
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texture);
 
-		glUniform1i(
-			glGetUniformLocation(shader->GetProgram(), "useTexture"), texture);
+		glUniform1i(glGetUniformLocation(shader->GetProgram(), 
+			"useTexture"), texture);
 
 		n->Draw(*this);
 	}

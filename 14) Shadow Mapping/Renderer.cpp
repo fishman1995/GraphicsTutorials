@@ -76,8 +76,8 @@ void Renderer::UpdateScene(float dt) {
 
 void Renderer::RenderScene() {
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-	DrawShadowScene();
 	DrawMainScene();
+	DrawShadowScene();
 }
 
 void Renderer::DrawShadowScene() {
